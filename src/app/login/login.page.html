@@ -1,0 +1,25 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-subtitle>Bienvenido</ion-card-subtitle>
+    <ion-card-title>Ingreso al Sistema</ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content>
+    <form [formGroup]="credentials" (ngSubmit)="onSubmit()">
+      <ion-item>
+        <ion-label position="floating">Ingrese su correo</ion-label>
+        <ion-input formControlName="username"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Ingrese su contraseña</ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
+
+      <ion-button expand="full" type="submit">
+        <ion-icon name="chevron-forward"></ion-icon>
+        Ingresar
+      </ion-button>
+    </form>
+  </ion-card-content>
+</ion-card>

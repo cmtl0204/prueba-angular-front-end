@@ -1,17 +1,77 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 2
+      Crear Estudiante
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-label position="floating">Nombres:</ion-label>
+      <ion-input formControlName="name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Fecha de nacimiento:
+        <p>{{birthdateField.value|date}}</p>
+      </ion-label>
+      <ion-button (click)="birthdateModal=true">Calendario</ion-button>
+      <ion-modal [isOpen]="birthdateModal">
+        <ng-template>
+          <ion-content>
+            <ion-datetime formControlName="birthdate" (ionChange)="confirmModalBirthdate()"></ion-datetime>
+          </ion-content>
+        </ng-template>
+      </ion-modal>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Nombres del Padre:</ion-label>
+      <ion-input formControlName="fatherName"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Nombres de la Madre:</ion-label>
+      <ion-input formControlName="motherName"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Grado:</ion-label>
+      <ion-select formControlName="level" placeholder="Seleccione">
+        <ion-select-option value="1">1</ion-select-option>
+        <ion-select-option value="2">2</ion-select-option>
+        <ion-select-option value="3">3</ion-select-option>
+        <ion-select-option value="4">4</ion-select-option>
+        <ion-select-option value="5">5</ion-select-option>
+        <ion-select-option value="6">6</ion-select-option>
+        <ion-select-option value="7">7</ion-select-option>
+        <ion-select-option value="8">8</ion-select-option>
+        <ion-select-option value="9">9</ion-select-option>
+        <ion-select-option value="10">10</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Sección:</ion-label>
+      <ion-select formControlName="section" placeholder="Seleccione">
+        <ion-select-option value="MATUTINA">Matutina</ion-select-option>
+        <ion-select-option value="VESPERTINA">Vespertina</ion-select-option>
+        <ion-select-option value="NOCTURNA">Nocturna</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Fecha de ingreso:
+        <p>{{registeredAtField.value|date}}</p>
+      </ion-label>
+      <ion-button (click)="registeredAtModal=true">Calendario</ion-button>
+      <ion-modal [isOpen]="registeredAtModal">
+        <ng-template>
+          <ion-content>
+            <ion-datetime formControlName="registeredAt" (ionChange)="confirmModalRegisteredAt()"></ion-datetime>
+          </ion-content>
+        </ng-template>
+      </ion-modal>
+    </ion-item>
+    <ion-button expand="full" type="submit">
+      <ion-icon name="save-outline"></ion-icon>
+      Crear Estudiante
+    </ion-button>
+  </form>
 </ion-content>

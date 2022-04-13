@@ -2,8 +2,13 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+const HOST = 'http://prueba-angular.test';
+
 export const environment = {
-  production: false
+  production: false,
+  HOST,
+  STORAGE_URL: HOST + '/storage',
+  API_URL: HOST + '/api'
 };
 
 /*
